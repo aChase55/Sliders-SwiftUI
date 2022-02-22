@@ -15,18 +15,14 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/kieranb662/bez.git", from: "1.0.0"),
         .package(url: "https://github.com/kieranb662/CGExtender.git", from: "1.0.1"),
-        .package( url: "https://github.com/kieranb662/SwiftUI-Shapes.git", from: "1.0.10"),
+        .package(name:"Shapes", url: "https://github.com/kieranb662/SwiftUI-Shapes.git", from: "1.0.10"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "Sliders",
-            dependencies: [
-                "bez",
-                "CGExtender",
-                .product(name: "Shapes", package: "SwiftUI-Shapes"),
-            ]),
+            dependencies: ["CGExtender", "Shapes", "bez"]),
         .testTarget(
             name: "SlidersTests",
             dependencies: ["Sliders"]),
